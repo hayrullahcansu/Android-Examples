@@ -13,23 +13,21 @@ import java.io.IOException;
 /**
  * Created by hayru on 2/22/2017.
  */
-public class AsyncTaskForConnection extends AsyncTask<Void, Void, String> {
+public class AsyncTaskForConnection extends AsyncTask<Void, Void, Void> {
   WebSocketAdapter adapter;
-  boolean isWorking = true;
+  WebSocket ws;
 
   public AsyncTaskForConnection(WebSocketAdapter _adapter) {
 	this.adapter = _adapter;
   }
 
-  public void setIsWorking(boolean i) {
-	this.isWorking = i;
-  }
 
   @Override
-  protected String doInBackground(Void... voids) {
+  protected Void doInBackground(Void... voids) {
 	start ();
-	return "";
+	return null;
   }
+
 
   @Override
   protected void onPreExecute() {
@@ -39,9 +37,7 @@ public class AsyncTaskForConnection extends AsyncTask<Void, Void, String> {
   private void start() {
 	// Create a WebSocket factory. The timeout value remains 0.
 	WebSocketFactory factory = new WebSocketFactory ();
-
 	// Create a WebSocket with a socket connection timeout value.
-	WebSocket ws = null;
 	try {
 	  ws = factory.createSocket ( "ws://10.0.2.2:8080/chatroom" );
 	} catch (IOException e) {
@@ -56,6 +52,5 @@ public class AsyncTaskForConnection extends AsyncTask<Void, Void, String> {
 	  Log.e ( "WEBIS", "HATAA2" + e.toString () );
 
 	}
-	return;
   }
 }

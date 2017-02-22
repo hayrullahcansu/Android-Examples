@@ -1,12 +1,9 @@
 package com.hayro.androchat.utils;
 
-import android.util.JsonWriter;
-
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
-import java.io.StringWriter;
 
 /**
  * Created by hayru on 2/17/2017.
@@ -17,7 +14,7 @@ public class JSON {
 	try {
 	  JSONObject job = new JSONObject ( str );
 	  msg.Client = job.getString ( "client" );
-	  msg.ContentCode = job.getInt ( "client_code" );
+	  msg.ContentCode = job.getInt ( "content_code" );
 	  msg.Content = job.getString ( "content" );
 	} catch (JSONException e) {
 	  throw e;
@@ -26,20 +23,14 @@ public class JSON {
   }
 
   public static String Marshall(Message msg) throws IOException {
-	StringWriter sw = new StringWriter ();
+	JSONObject json = new JSONObject ();
 	try {
-	  JsonWriter writer = new JsonWriter ( sw );
-	  writer.beginObject ();
-	  writer.setIndent ( "client" );
-	  writer.value ( msg.Client );
-	  writer.setIndent ( "client_code" );
-	  writer.value ( msg.ContentCode );
-	  writer.setIndent ( "content" );
-	  writer.value ( msg.Content );
-	  writer.endObject ();
-	} catch (IOException e) {
-	  throw e;
+	  json.put ( "client", msg.Client );
+	  json.put ( "content_code", msg.ContentCode );
+	  json.put ( "content", msg.Content );
+	} catch (JSONException e) {
+	  e.printStackTrace ();
 	}
-	return sw.toString ();
+	return json.toString ();
   }
 }

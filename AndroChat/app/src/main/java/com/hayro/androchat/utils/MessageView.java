@@ -39,6 +39,7 @@ public class MessageView extends LinearLayout {
 	tv.setTextSize ( TypedValue.COMPLEX_UNIT_DIP, 18 );
 	tv.setGravity ( Gravity.BOTTOM );
 	tv.setLayoutParams ( lp );
+
 	this.addView ( tv );
 	tv = new TextView ( this.context );
 	lp = new LayoutParams ( ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT );
