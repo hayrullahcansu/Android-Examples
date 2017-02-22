@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_horizontal|top"
+        android:weightSum="1">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:id="@+id/sw"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="0.5"
+            android:fillViewport="false"
+            android:layout_marginTop="10dp">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/ll_messages">
+
+            </LinearLayout>
+        </ScrollView>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="2dp">
+
+            <EditText
+                android:layout_width="293dp"
+                android:layout_height="match_parent"
+                android:id="@+id/etMessage"
+                android:layout_gravity="center_horizontal"
+                android:hint="Your Message"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Send"
+                android:id="@+id/bSend"/>
+        </LinearLayout>
+
+    </LinearLayout>
+</FrameLayout>
