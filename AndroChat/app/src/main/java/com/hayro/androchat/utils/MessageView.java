@@ -1,6 +1,7 @@
 package com.hayro.androchat.utils;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.ViewGroup;
@@ -35,6 +36,8 @@ public class MessageView extends LinearLayout {
 	TextView tv = new TextView ( this.context );
 	lp = new LayoutParams ( ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT );
 	lp.gravity = Gravity.CENTER;
+	if (this.message.Client.equals ( "Server")) tv.setTextColor ( Color.RED );
+	else tv.setTextColor ( Color.BLUE );
 	tv.setText ( this.message.Client );
 	tv.setTextSize ( TypedValue.COMPLEX_UNIT_DIP, 18 );
 	tv.setGravity ( Gravity.BOTTOM );
@@ -44,6 +47,7 @@ public class MessageView extends LinearLayout {
 	tv = new TextView ( this.context );
 	lp = new LayoutParams ( ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT );
 	lp.gravity = Gravity.CENTER;
+	lp.setMargins ( 20, 0, 0, 0 );
 	tv.setText ( this.message.Content );
 	tv.setTextSize ( TypedValue.COMPLEX_UNIT_DIP, 14 );
 	tv.setGravity ( Gravity.RIGHT );

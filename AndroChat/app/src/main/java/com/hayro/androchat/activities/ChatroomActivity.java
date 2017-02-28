@@ -11,9 +11,9 @@ import android.widget.ScrollView;
 import android.widget.Toast;
 
 import com.hayro.androchat.R;
-import com.hayro.androchat.utils.JSON;
 import com.hayro.androchat.utils.Message;
 import com.hayro.androchat.utils.MessageView;
+import com.hayro.androchat.utils.JSON;
 import com.hayro.androchat.websocket.WSAdapter;
 import com.neovisionaries.ws.client.WebSocket;
 import com.neovisionaries.ws.client.WebSocketAdapter;
@@ -30,7 +30,9 @@ import java.util.Map;
 /**
  * Created by hayru on 2/17/2017.
  */
-public class ChatroomActivity extends Activity {
+
+
+public class ChatroomActivity extends Activity  {
   Button bSend;
   LinearLayout ll_messages;
   ScrollView scrollView;
@@ -39,6 +41,7 @@ public class ChatroomActivity extends Activity {
   WebSocketAdapter wsa;
   WSAdapter socketAdapter;
   WebSocket ws;
+
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -70,6 +73,8 @@ public class ChatroomActivity extends Activity {
 	  public void run() {
 		WebSocketFactory factory = new WebSocketFactory ();
 		// Create a WebSocket with a socket connection timeout value.
+
+
 		try {
 		  ws = factory.createSocket ( "ws://10.0.2.2:8080/chatroom" );
 		} catch (IOException e) {
@@ -194,7 +199,13 @@ public class ChatroomActivity extends Activity {
 		MessageView mw = new MessageView ( ChatroomActivity.this );
 		mw.setMessage ( msg );
 		ll_messages.addView ( mw.prepareView () );
-		scrollView.scrollTo ( 0, scrollView.getBottom () );
+
+		scrollView.postDelayed(new Runnable() {
+		  @Override
+		  public void run() {
+			scrollView.fullScroll(ScrollView.FOCUS_DOWN);
+		  }
+		},200);
 	  }
 	} );
 
